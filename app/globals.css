@@ -16,6 +16,11 @@
 html {
   background-color: var(--color-bg);
   color-scheme: dark;
+  /* iOS Safari's elastic rubber-band overscroll fires raw scroll events past
+     the document's real bounds, which a scrub-tied GSAP pin follows directly
+     — making pinned sections visibly overshoot and spring back in sync with
+     the bounce. Disabling it removes that input noise at the source. */
+  overscroll-behavior-y: none;
 }
 
 html.lenis {

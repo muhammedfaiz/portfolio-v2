@@ -43,7 +43,11 @@ export default function WorkChapterScene({
         start: "top top",
         end: "+=2400",
         pin: true,
-        scrub: true,
+        // Numeric scrub, not `true` — absorbs touch-scroll jumpiness (iOS
+        // rubber-band overscroll especially) instead of tracking raw delta
+        // 1:1, which otherwise reads as the assembly animation "floppily"
+        // overshooting and springing back on real mobile touch input.
+        scrub: 0.5,
         onUpdate: (self) => {
           const p = self.progress;
           assembleRef.current = Math.min(p / ASSEMBLE_FRACTION, 1);

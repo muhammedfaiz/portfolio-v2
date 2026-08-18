@@ -55,7 +55,8 @@ export default function ProcessScene({
         start: "top top",
         end: `+=${pinDistance}`,
         pin: true,
-        scrub: true,
+        // See WorkChapterScene.tsx for why this is a numeric scrub, not `true`.
+        scrub: 0.5,
         onUpdate: (self) => {
           progressRef.current = self.progress;
           const stage = Math.round(self.progress * 4);

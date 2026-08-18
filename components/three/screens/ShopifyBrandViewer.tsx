@@ -13,13 +13,13 @@ export default function ShopifyBrandViewer({
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden rounded-md bg-bg font-sans">
-      <div className="flex items-center gap-1.5 border-b border-line px-3 py-2">
+      <div className="flex items-center gap-1.5 overflow-x-auto border-b border-line px-3 py-2">
         {shopifyBrands.map((b, i) => (
           <button
             key={b.id}
             type="button"
             onClick={() => onSelect(i)}
-            className={`rounded-full border px-2.5 py-1 text-[10px] font-mono uppercase tracking-wide transition-colors ${
+            className={`shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-mono uppercase tracking-wide transition-colors ${
               i === active
                 ? "border-accent/50 bg-accent/15 text-ink"
                 : "border-line text-ink-dim hover:text-ink-soft"

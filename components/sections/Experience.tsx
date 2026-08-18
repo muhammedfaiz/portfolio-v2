@@ -79,7 +79,10 @@ export default function Experience() {
           start: "top top",
           end: () => `+=${track.scrollWidth - wrap.clientWidth}`,
           pin: true,
-          scrub: true,
+          // Numeric scrub absorbs touch-scroll jumpiness (e.g. a tablet in
+          // landscape, which is wide enough to hit this desktop branch but
+          // still has touch input) instead of tracking raw delta 1:1.
+          scrub: 0.5,
           invalidateOnRefresh: true,
         },
       });

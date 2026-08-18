@@ -42,9 +42,9 @@ export default function GithubStats() {
 
       <div className="rounded-2xl border border-line bg-surface p-8">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <span className="mono-label inline-flex items-center gap-2 text-ink-soft">
-            <GitHubIcon className="h-4 w-4" />
-            github.com/{username}
+          <span className="mono-label inline-flex min-w-0 items-center gap-2 text-ink-soft">
+            <GitHubIcon className="h-4 w-4 shrink-0" />
+            <span className="truncate">github.com/{username}</span>
           </span>
           <a
             href={links.github}
@@ -58,7 +58,7 @@ export default function GithubStats() {
           </a>
         </div>
 
-        <div className="mb-8 flex flex-wrap gap-10">
+        <div className="mb-8 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 sm:gap-10">
           <div>
             <div className="font-display text-3xl font-bold text-accent">
               {user ? user.public_repos : "—"}
@@ -71,7 +71,7 @@ export default function GithubStats() {
             </div>
             <div className="mono-label mt-1 text-ink-dim">Followers</div>
           </div>
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <div className="font-display text-3xl font-bold text-accent">
               {user ? user.following : "—"}
             </div>
@@ -79,12 +79,16 @@ export default function GithubStats() {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-xl border border-line bg-black/20">
+        {/* Fixed min-width + horizontal scroll on narrow screens — squeezing
+            this chart down to mobile width shrinks each day-cell to an
+            illegible dot. Desktop containers are already wider than the
+            min-width, so this has no effect there. */}
+        <div className="overflow-x-auto overflow-y-hidden rounded-xl border border-line bg-black/20">
           <img
             src={`https://ghchart.rshah.org/4da8ff/${username}`}
             alt={`${username}'s GitHub contribution graph`}
             loading="lazy"
-            className="w-full"
+            className="w-full min-w-[600px]"
           />
         </div>
 

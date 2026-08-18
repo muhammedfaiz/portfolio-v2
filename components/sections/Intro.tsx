@@ -32,7 +32,13 @@ export default function Intro() {
           trigger: sectionRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: true,
+          // A numeric scrub (vs. `true`) adds a small catch-up lag instead of
+          // tracking raw scroll delta 1:1 — imperceptible on desktop wheel/
+          // trackpad input, but it absorbs the jumpiness of real touch scroll
+          // (especially iOS's elastic rubber-band overscroll at section
+          // boundaries), which otherwise reads as the animation "floppily"
+          // overshooting and springing back in sync with the bounce.
+          scrub: 0.5,
         },
       });
 
