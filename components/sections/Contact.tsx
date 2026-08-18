@@ -93,9 +93,8 @@ export default function Contact() {
         </div>
       </div>
 
-      <footer className="mono-label mt-12 flex flex-wrap justify-between gap-3 text-ink-dim">
+      <footer className="mono-label mt-12 text-ink-dim">
         <span>© {new Date().getFullYear()} Muhammed Faiz</span>
-        <span>Built with intent, not a template.</span>
       </footer>
     </section>
   );
